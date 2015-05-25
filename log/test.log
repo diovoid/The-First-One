@@ -1,0 +1,1086 @@
+  [1m[36m (0.8ms)[0m  [1mDROP DATABASE IF EXISTS `exper_test`[0m
+  [1m[35m (0.4ms)[0m  CREATE DATABASE `exper_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (112.2ms)[0m  [1mCREATE TABLE `articles` (`id` int(11) auto_increment PRIMARY KEY, `title` varchar(255), `post` text, `user_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (98.6ms)[0m  CREATE TABLE `comments` (`id` int(11) auto_increment PRIMARY KEY, `commenter` varchar(255), `body` text, `article_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (176.2ms)[0m  [1mCREATE  INDEX `index_comments_on_article_id` USING btree ON `comments` (`article_id`) [0m
+  [1m[35m (97.6ms)[0m  CREATE TABLE `users` (`id` int(11) auto_increment PRIMARY KEY, `password` varchar(255), `email` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (277.7ms)[0m  [1mALTER TABLE `comments` ADD CONSTRAINT `fk_rails_3bf61a60d3`
+FOREIGN KEY (`article_id`)
+  REFERENCES `articles` (`id`)
+[0m
+  [1m[35m (89.7ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (221.7ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (54.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150524065119')[0m
+  [1m[35m (55.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20150524025122')
+  [1m[36m (55.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20150524023849')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `articles`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:38:38', '2015-05-24 08:38:38', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:38:38', '2015-05-24 08:38:38', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `comments`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:38:38', '2015-05-24 08:38:38', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:38:38', '2015-05-24 08:38:38', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:38:38', '2015-05-24 08:38:38', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:38:38', '2015-05-24 08:38:38', 298486374)[0m
+  [1m[35m (53.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+PagesControllerTest: test_should_get_home
+-----------------------------------------
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 2045ms (Views: 2044.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+PagesControllerTest: test_should_get_about
+------------------------------------------
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+PagesControllerTest: test_should_get_directions
+-----------------------------------------------
+Processing by PagesController#directions as HTML
+  Rendered pages/directions.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (2.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}, "id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/980190962
+Completed 302 Found in 23ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  Rendered users/_form.html.erb (57.7ms)
+  Rendered users/edit.html.erb within layouts/application (69.3ms)
+Completed 200 OK in 77ms (Views: 75.4ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', '2015-05-24 08:38:40', '2015-05-24 08:38:40')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190963
+Completed 302 Found in 10ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (61.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM `users` WHERE `users`.`id` = 980190962[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (45.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 12ms (Views: 9.7ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (7.8ms)
+  Rendered users/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ArticlesControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  Rendered articles/_form.html.erb (13.3ms)
+  Rendered articles/edit.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 25ms (Views: 22.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+ArticlesControllerTest: test_should_destroy_article
+---------------------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `articles`
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM `articles` WHERE `articles`.`id` = 980190962[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+  [1m[35m (59.9ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ArticlesControllerTest: test_should_show_article
+------------------------------------------------
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35mComment Load (0.5ms)[0m  SELECT `comments`.* FROM `comments` WHERE `comments`.`article_id` = 980190962
+  Rendered articles/show.html.erb within layouts/application (62.6ms)
+Completed 200 OK in 69ms (Views: 66.6ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_update_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#update as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190962
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------------------------
+ArticlesControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.5ms)[0m  SELECT `articles`.* FROM `articles`
+  Rendered articles/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_create_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `articles`
+Processing by ArticlesController#create as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}}
+  [1m[36m (1.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:38:41', '2015-05-24 08:38:41')
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles/980190963
+Completed 302 Found in 11ms (ActiveRecord: 2.1ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `articles`
+  [1m[36m (55.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-------------------------------------------
+ArticlesControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (6.4ms)
+  Rendered articles/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM `articles`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:42:14', '2015-05-24 08:42:14', 980190962)
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:42:14', '2015-05-24 08:42:14', 298486374)[0m
+  [1m[35mFixture Delete (0.6ms)[0m  DELETE FROM `comments`
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:42:14', '2015-05-24 08:42:14', 980190962)[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:42:14', '2015-05-24 08:42:14', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:42:14', '2015-05-24 08:42:14', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:42:14', '2015-05-24 08:42:14', 298486374)[0m
+  [1m[35m (55.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+PagesControllerTest: test_should_get_about
+------------------------------------------
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 431ms (Views: 430.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------
+PagesControllerTest: test_should_get_directions
+-----------------------------------------------
+Processing by PagesController#directions as HTML
+  Rendered pages/directions.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------
+PagesControllerTest: test_should_get_home
+-----------------------------------------
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------------------------
+ArticlesControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.6ms)[0m  SELECT `articles`.* FROM `articles`
+  Rendered articles/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 15ms (Views: 13.3ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ArticlesControllerTest: test_should_show_article
+------------------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`article_id` = 980190962[0m
+  Rendered articles/show.html.erb within layouts/application (86.5ms)
+Completed 200 OK in 99ms (Views: 91.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ArticlesControllerTest: test_should_create_article
+--------------------------------------------------
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#create as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}}
+  [1m[35m (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:42:15', '2015-05-24 08:42:15')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190964
+Completed 302 Found in 12ms (ActiveRecord: 1.3ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+  [1m[35m (38.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ArticlesControllerTest: test_should_destroy_article
+---------------------------------------------------
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM `articles` WHERE `articles`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `articles`
+  [1m[36m (59.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ArticlesControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  Rendered articles/_form.html.erb (10.8ms)
+  Rendered articles/edit.html.erb within layouts/application (21.1ms)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ArticlesControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (11.5ms)
+  Rendered articles/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ArticlesControllerTest: test_should_update_article
+--------------------------------------------------
+  [1m[35mArticle Load (0.8ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#update as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles/980190962
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', '2015-05-24 08:42:15', '2015-05-24 08:42:15')[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/980190964
+Completed 302 Found in 11ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (52.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM `users` WHERE `users`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 9ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (46.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (10.1ms)
+  Rendered users/new.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  Rendered users/_form.html.erb (5.0ms)
+  Rendered users/edit.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190962
+Completed 302 Found in 11ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM `articles`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:44:48', '2015-05-24 08:44:48', 980190962)
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:44:48', '2015-05-24 08:44:48', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `comments`
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:44:48', '2015-05-24 08:44:48', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:44:48', '2015-05-24 08:44:48', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:44:48', '2015-05-24 08:44:48', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:44:48', '2015-05-24 08:44:48', 298486374)[0m
+  [1m[35m (83.3ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (54.0ms)
+  Rendered users/new.html.erb within layouts/application (64.4ms)
+Completed 200 OK in 460ms (Views: 458.3ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', '2015-05-24 08:44:48', '2015-05-24 08:44:48')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users/980190965
+Completed 302 Found in 12ms (ActiveRecord: 1.1ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (61.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190962
+Completed 302 Found in 17ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (2.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM `users` WHERE `users`.`id` = 980190962
+  [1m[36m (1.7ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 12ms (ActiveRecord: 4.7ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (54.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  Rendered users/_form.html.erb (6.2ms)
+  Rendered users/edit.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------
+PagesControllerTest: test_should_get_directions
+-----------------------------------------------
+Processing by PagesController#directions as HTML
+  Rendered pages/directions.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------
+PagesControllerTest: test_should_get_home
+-----------------------------------------
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+------------------------------------------
+PagesControllerTest: test_should_get_about
+------------------------------------------
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------------
+ArticlesControllerTest: test_should_show_article
+------------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36mComment Load (1.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`article_id` = 980190962[0m
+  Rendered articles/show.html.erb within layouts/application (59.6ms)
+Completed 200 OK in 69ms (Views: 64.4ms | ActiveRecord: 1.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ArticlesControllerTest: test_should_create_article
+--------------------------------------------------
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#create as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}}
+  [1m[35m (0.6ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:44:49', '2015-05-24 08:44:49')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190965
+Completed 302 Found in 13ms (ActiveRecord: 1.3ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+  [1m[35m (44.9ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ArticlesControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT `articles`.* FROM `articles`[0m
+  Rendered articles/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+ArticlesControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  Rendered articles/_form.html.erb (9.4ms)
+  Rendered articles/edit.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+-------------------------------------------
+ArticlesControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[35mArticle Load (0.6ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (6.6ms)
+  Rendered articles/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_update_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#update as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (2.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190962
+Completed 302 Found in 11ms (ActiveRecord: 3.2ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  BEGIN
+---------------------------------------------------
+ArticlesControllerTest: test_should_destroy_article
+---------------------------------------------------
+  [1m[36mArticle Load (0.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `articles`
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM `articles` WHERE `articles`.`id` = 980190962[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+  [1m[35m (51.9ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM `articles`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:46:33', '2015-05-24 08:46:33', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:46:33', '2015-05-24 08:46:33', 298486374)[0m
+  [1m[35mFixture Delete (2.8ms)[0m  DELETE FROM `comments`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:46:33', '2015-05-24 08:46:33', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:46:33', '2015-05-24 08:46:33', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:46:33', '2015-05-24 08:46:33', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:46:33', '2015-05-24 08:46:33', 298486374)[0m
+  [1m[35m (55.6ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (54.1ms)
+  Rendered users/new.html.erb within layouts/application (63.2ms)
+Completed 200 OK in 460ms (Views: 458.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  Rendered users/_form.html.erb (4.3ms)
+  Rendered users/edit.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 18ms (Views: 12.7ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190962
+Completed 302 Found in 15ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM `users` WHERE `users`.`id` = 980190962
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (68.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users`
+  Rendered users/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', '2015-05-24 08:46:34', '2015-05-24 08:46:34')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190966
+Completed 302 Found in 8ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (50.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ArticlesControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  Rendered articles/_form.html.erb (11.7ms)
+  Rendered articles/edit.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (1.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_create_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `articles`
+Processing by ArticlesController#create as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:46:34', '2015-05-24 08:46:34')
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles/980190966
+Completed 302 Found in 9ms (ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `articles`
+  [1m[36m (53.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------------------------
+ArticlesControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#index as HTML
+  [1m[35mArticle Load (0.4ms)[0m  SELECT `articles`.* FROM `articles`
+  Rendered articles/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_update_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#update as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190962
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ArticlesControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (7.6ms)
+  Rendered articles/new.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 16ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ArticlesControllerTest: test_should_destroy_article
+---------------------------------------------------
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM `articles` WHERE `articles`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `articles`
+  [1m[36m (51.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ArticlesControllerTest: test_should_show_article
+------------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`article_id` = 980190962[0m
+  Rendered articles/show.html.erb within layouts/application (61.0ms)
+Completed 200 OK in 67ms (Views: 64.9ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------
+PagesControllerTest: test_should_get_about
+------------------------------------------
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+PagesControllerTest: test_should_get_directions
+-----------------------------------------------
+Processing by PagesController#directions as HTML
+  Rendered pages/directions.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+PagesControllerTest: test_should_get_home
+-----------------------------------------
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.5ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.4ms)[0m  [1mDELETE FROM `articles`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:48:25', '2015-05-24 08:48:25', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:48:25', '2015-05-24 08:48:25', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM `comments`
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:48:26', '2015-05-24 08:48:26', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `comments` (`commenter`, `body`, `article_id`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', NULL, '2015-05-24 08:48:26', '2015-05-24 08:48:26', 298486374)
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM `users`[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:48:26', '2015-05-24 08:48:26', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2015-05-24 08:48:26', '2015-05-24 08:48:26', 298486374)[0m
+  [1m[35m (76.2ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------------------------
+UsersControllerTest: test_should_destroy_user
+---------------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM `users` WHERE `users`.`id` = 980190962[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/users
+Completed 302 Found in 9ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (53.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+UsersControllerTest: test_should_update_user
+--------------------------------------------
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}, "id"=>"980190962"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190962
+Completed 302 Found in 13ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+UsersControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  Rendered users/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 391ms (Views: 389.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------
+UsersControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (32.1ms)
+  Rendered users/new.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+UsersControllerTest: test_should_show_user
+------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------
+UsersControllerTest: test_should_create_user
+--------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"MyString", "password"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `users` (`password`, `email`, `created_at`, `updated_at`) VALUES ('MyString', 'MyString', '2015-05-24 08:48:26', '2015-05-24 08:48:26')
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/users/980190967
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (56.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------
+UsersControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 980190962 LIMIT 1
+  Rendered users/_form.html.erb (5.9ms)
+  Rendered users/edit.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------
+PagesControllerTest: test_should_get_directions
+-----------------------------------------------
+Processing by PagesController#directions as HTML
+  Rendered pages/directions.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+PagesControllerTest: test_should_get_about
+------------------------------------------
+Processing by PagesController#about as HTML
+  Rendered pages/about.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------
+PagesControllerTest: test_should_get_home
+-----------------------------------------
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+--------------------------------------------------
+ArticlesControllerTest: test_should_update_article
+--------------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#update as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}, "id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190962
+Completed 302 Found in 10ms (ActiveRecord: 0.7ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ArticlesControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#new as HTML
+  Rendered articles/_form.html.erb (12.2ms)
+  Rendered articles/new.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ArticlesControllerTest: test_should_create_article
+--------------------------------------------------
+  [1m[35mArticle Load (0.3ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#create as HTML
+  Parameters: {"article"=>{"post"=>"MyText", "title"=>"MyString", "user_id"=>"1"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `articles` (`title`, `post`, `user_id`, `created_at`, `updated_at`) VALUES ('MyString', 'MyText', 1, '2015-05-24 08:48:26', '2015-05-24 08:48:26')[0m
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/articles/980190967
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+  [1m[35m (57.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------------
+ArticlesControllerTest: test_should_destroy_article
+---------------------------------------------------
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `articles`[0m
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.2ms)[0m  DELETE FROM `articles` WHERE `articles`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/articles
+Completed 302 Found in 8ms (ActiveRecord: 1.8ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `articles`
+  [1m[36m (49.0ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ArticlesControllerTest: test_should_show_article
+------------------------------------------------
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT `comments`.* FROM `comments` WHERE `comments`.`article_id` = 980190962[0m
+  Rendered articles/show.html.erb within layouts/application (50.8ms)
+Completed 200 OK in 57ms (Views: 55.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+ArticlesControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[35mArticle Load (0.2ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mArticle Load (0.2ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1[0m
+  Rendered articles/_form.html.erb (6.7ms)
+  Rendered articles/edit.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ArticlesControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35mArticle Load (0.4ms)[0m  SELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 980190962 LIMIT 1
+Processing by ArticlesController#index as HTML
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT `articles`.* FROM `articles`[0m
+  Rendered articles/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK

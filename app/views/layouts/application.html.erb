@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="wrapper">
+
+<header>
+	
+<%= link_to image_tag("logo.png", alt: "Logo", :size => '135x105'), {:controller => 'pages', :action => 'home'}, {:class => 'websiteLogo'} %>
+
+<%= link_to 'Experiment', {:controller => 'pages', :action => 'home'}, {:class => 'websiteTitle'} %>
+
+</header>
+
+<nav id="horzNav">
+	
+<p>
+	<%= link_to 'Home', {:controller => 'pages', :action => 'home'} %>
+
+	<%= link_to 'Users', {:controller => 'users', :action => 'index'} %>
+	<%= link_to 'Articles', {:controller => 'articles', :action => 'index'} %>
+
+	<%= link_to 'Directions', {:controller => 'pages', :action => 'directions'} %>
+	<%= link_to 'About', {:controller => 'pages', :action => 'about'} %>
+
+</p>
+</nav>
+
+<main id="content">
+
+<%= yield %>
+
+</main>
+
+</div> <!-- END OF WRAPPER -->
+</body>
+</html>
